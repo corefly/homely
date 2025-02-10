@@ -8,6 +8,13 @@
 
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1" />
         <PackageReference Include="MudBlazor" Version="8.*"/>
+        <PackageReference Include="Scalar.AspNetCore" Version="2.0.12" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\Modules\Identity\Homely.Identity.Api\Homely.Identity.Api.csproj" />
     </ItemGroup>
 </Project>
