@@ -1,0 +1,37 @@
+@AuthService_HostAddress = https://localhost:17061
+@Email = test.user@example.com
+@Password = Password123!
+
+### Health
+GET {{AuthService_HostAddress}}/health
+
+### Liveness
+GET {{AuthService_HostAddress}}/alive
+
+### Sign up
+# @name signUp
+POST {{AuthService_HostAddress}}/auth/sign-up
+Content-Type: application/json
+
+{
+  "email": "{{Email}}",
+  "password": "{{Password}}",
+  "displayName": "Test User"
+}
+
+### Sign in
+# @name signIn
+POST {{AuthService_HostAddress}}/auth/sign-in
+Content-Type: application/json
+
+{
+  "email": "{{Email}}",
+  "password": "{{Password}}"
+}
+
+### Google sign-in challenge
+GET {{AuthService_HostAddress}}/auth/google
+
+### Google callback endpoint
+# This endpoint is normally called by the Google OAuth middleware after a browser-based sign-in.
+GET {{AuthService_HostAddress}}/auth/google/callback
