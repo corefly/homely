@@ -1,0 +1,44 @@
+@ExpensesService_HostAddress = https://localhost:17071
+@OwnerUserId = 11111111-1111-1111-1111-111111111111
+@ExpenseId = 00000000-0000-0000-0000-000000000000
+
+### Health
+GET {{ExpensesService_HostAddress}}/health
+
+### Liveness
+GET {{ExpensesService_HostAddress}}/alive
+
+### Create expense
+# @name createExpense
+POST {{ExpensesService_HostAddress}}/expenses
+Content-Type: application/json
+
+{
+  "timestamp": "2026-04-30T19:30:00Z",
+  "ownerUserId": "{{OwnerUserId}}",
+  "amount": 24.50,
+  "currency": "USD",
+  "type": "food",
+  "description": "Groceries"
+}
+
+### List expenses by owner
+GET {{ExpensesService_HostAddress}}/expenses?ownerUserId={{OwnerUserId}}
+
+### Get expense
+GET {{ExpensesService_HostAddress}}/expenses/{{ExpenseId}}
+
+### Update expense
+PUT {{ExpensesService_HostAddress}}/expenses/{{ExpenseId}}
+Content-Type: application/json
+
+{
+  "timestamp": "2026-04-30T20:00:00Z",
+  "amount": 31.20,
+  "currency": "USD",
+  "type": "food",
+  "description": "Groceries and household items"
+}
+
+### Delete expense
+DELETE {{ExpensesService_HostAddress}}/expenses/{{ExpenseId}}

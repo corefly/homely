@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Homely.AuthService\Homely.AuthService.csproj" />
+    <ProjectReference Include="..\Homely.ExpensesService\Homely.ExpensesService.csproj" />
   </ItemGroup>
 
 </Project>

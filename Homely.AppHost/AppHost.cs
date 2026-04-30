@@ -9,10 +9,16 @@ var postgres = builder.AddPostgres("postgres", postgresUserName, postgresPasswor
     .WithDataVolume("homely-postgres-data");
 
 var authDb = postgres.AddDatabase("authdb");
+var expensesDb = postgres.AddDatabase("expensesdb");
 
 builder.AddProject<Projects.Homely_AuthService>("auth")
     .WithReference(authDb)
     .WaitFor(authDb)
+    .WithHttpHealthCheck("/health");
+
+builder.AddProject<Projects.Homely_ExpensesService>("expenses")
+    .WithReference(expensesDb)
+    .WaitFor(expensesDb)
     .WithHttpHealthCheck("/health");
 
 builder.Build().Run();

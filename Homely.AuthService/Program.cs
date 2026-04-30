@@ -5,7 +5,6 @@ using Homely.AuthService.Security;
 using JasperFx;
 using Marten;
 using Marten.Schema;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
