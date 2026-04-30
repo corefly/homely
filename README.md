@@ -28,11 +28,11 @@ Build and start the generated Docker Compose deployment:
 aspire deploy
 ```
 
-Generated artifacts are written to `Homely.AppHost/aspire-output/`.
+Generated artifacts are written to `src/Homely.AppHost/aspire-output/`.
 
 Run the prepared artifacts manually:
 
 ```bash
-cd Homely.AppHost/aspire-output
+cd src/Homely.AppHost/aspire-output
 docker compose --env-file .env.Production up -d
 ```
