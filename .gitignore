@@ -53,6 +53,8 @@ coverage.cobertura.xml
 appsettings.Local.json
 *.Development.local.json
 .aspire/
+aspire-output/
+**/aspire-output/
 dcp/
 
 ## Secrets and certificates

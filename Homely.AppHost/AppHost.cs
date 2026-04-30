@@ -1,7 +1,12 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-var postgres = builder.AddPostgres("postgres")
-    .WithDataVolume();
+builder.AddDockerComposeEnvironment("compose");
+
+var postgresUserName = builder.AddParameter("postgres-username", "postgres", publishValueAsDefault: true);
+var postgresPassword = builder.AddParameter("postgres-password", "homely-postgres-dev-password", secret: true);
+
+var postgres = builder.AddPostgres("postgres", postgresUserName, postgresPassword)
+    .WithDataVolume("homely-postgres-data");
 
 var authDb = postgres.AddDatabase("authdb");
 
