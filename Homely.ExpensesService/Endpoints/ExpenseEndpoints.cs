@@ -30,9 +30,14 @@ public static class ExpenseEndpoints
 
     private static async Task<IResult> ListByOwnerAsync(
         Guid ownerUserId,
+        int? page,
+        int? pageSize,
         IDocumentSession session,
         CancellationToken cancellationToken)
     {
+        var requestedPage = page ?? 1;
+        var requestedPageSize = pageSize ?? 20;
+
         if (ownerUserId == Guid.Empty)
         {
             return Results.ValidationProblem(new Dictionary<string, string[]>
@@ -41,12 +46,42 @@ public static class ExpenseEndpoints
             });
         }
 
-        var expenses = await session.Query<Expense>()
-            .Where(expense => expense.OwnerUserId == ownerUserId)
+        if (requestedPage < 1)
+        {
+            return Results.ValidationProblem(new Dictionary<string, string[]>
+            {
+                [nameof(page)] = ["Page must be greater than zero."]
+            });
+        }
+
+        if (requestedPageSize is < 1 or > 100)
+        {
+            return Results.ValidationProblem(new Dictionary<string, string[]>
+            {
+                [nameof(pageSize)] = ["Page size must be between 1 and 100."]
+            });
+        }
+
+        var query = session.Query<Expense>()
+            .Where(expense => expense.OwnerUserId == ownerUserId);
+
+        var totalCount = await query.CountAsync(cancellationToken);
+        var totalPages = totalCount == 0 ? 0 : (int)Math.Ceiling(totalCount / (double)requestedPageSize);
+
+        var expenses = await query
             .OrderByDescending(expense => expense.Timestamp)
+            .Skip((requestedPage - 1) * requestedPageSize)
+            .Take(requestedPageSize)
             .ToListAsync(cancellationToken);
 
-        return Results.Ok(expenses.Select(ToResponse));
+        return Results.Ok(new PagedResponse<ExpenseResponse>(
+            expenses.Select(ToResponse).ToList(),
+            requestedPage,
+            requestedPageSize,
+            totalCount,
+            totalPages,
+            requestedPage > 1,
+            totalPages > 0 && requestedPage < totalPages));
     }
 
     private static async Task<IResult> GetByIdAsync(

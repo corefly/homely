@@ -23,7 +23,7 @@ Content-Type: application/json
 }
 
 ### List expenses by owner
-GET {{ExpensesService_HostAddress}}/expenses?ownerUserId={{OwnerUserId}}
+GET {{ExpensesService_HostAddress}}/expenses?ownerUserId={{OwnerUserId}}&page=1&pageSize=20
 
 ### Get expense
 GET {{ExpensesService_HostAddress}}/expenses/{{ExpenseId}}
