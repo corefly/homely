@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homely.AppHost", "Homely.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homely.ServiceDefaults", "Homely.ServiceDefaults\Homely.ServiceDefaults.csproj", "{DB752DA1-9562-48C3-AF88-0B19BB2E7C95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homely.AuthService", "Homely.AuthService\Homely.AuthService.csproj", "{EC2A6F60-FB1B-4E4E-B2C6-0B2073D7EE63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{DB752DA1-9562-48C3-AF88-0B19BB2E7C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB752DA1-9562-48C3-AF88-0B19BB2E7C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB752DA1-9562-48C3-AF88-0B19BB2E7C95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC2A6F60-FB1B-4E4E-B2C6-0B2073D7EE63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC2A6F60-FB1B-4E4E-B2C6-0B2073D7EE63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC2A6F60-FB1B-4E4E-B2C6-0B2073D7EE63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC2A6F60-FB1B-4E4E-B2C6-0B2073D7EE63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
