@@ -8,4 +8,8 @@
     <UserSecretsId>7229ecd1-deac-4b64-ad0c-a1c8f7446468</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.6.1" />
+  </ItemGroup>
+
 </Project>
