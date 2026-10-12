@@ -1,0 +1,5 @@
+{
+  "appHost": {
+    "path": "src/Homely.AppHost/Homely.AppHost.csproj"
+  }
+}
