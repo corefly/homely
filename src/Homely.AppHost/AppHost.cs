@@ -4,10 +4,10 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 builder.AddDockerComposeEnvironment("env");
 
-var postgres = builder.AddPostgres("postgres")
+var postgresServer = builder.AddPostgres("postgres")
     .WithDataVolume()
     .WithLifetime(ContainerLifetime.Persistent);
-var postgresDb = postgres.AddDatabase("homely");
+var postgresDb = postgresServer.AddDatabase("homely");
 
 var api = builder.AddProject<Projects.Homely_Api>("api")
     .WithReference(postgresDb)
